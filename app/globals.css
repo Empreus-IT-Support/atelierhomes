@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f3;
+  --foreground: #2b2723;
+  --ink: #1c1915;
+  --paper: #faf8f3;
+  --paper-2: #f3efe7;
+  --accent: #a3825a;
+  --accent-deep: #8a6b45;
+  --line: rgba(28, 25, 21, 0.12);
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --font-sans: var(--font-sans-body), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-serif-display), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  letter-spacing: 0.002em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    line-height: 1.08;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* keep autofilled form fields on-palette instead of Chrome's white/yellow */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #2b2723;
+  -webkit-box-shadow: 0 0 0 1000px #f3efe7 inset;
+  box-shadow: 0 0 0 1000px #f3efe7 inset;
+  caret-color: #2b2723;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ---- selection + scrollbar ---- */
+::selection { background: var(--accent); color: #fff; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #efeadf; }
+::-webkit-scrollbar-thumb { background: #cfc6b6; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #b9ac96; }
+
+/* ---- layout helpers ---- */
+.container-x {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 22px;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.hairline { border-color: var(--line); }
+
+/* oversized faint watermark used behind section headings */
+.watermark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  color: rgba(28, 25, 21, 0.045);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---- reveal-on-scroll ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---- image placeholder blocks (until client photography arrives) ---- */
+.ph {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(160deg, #ece5d8 0%, #e2d8c6 45%, #d8ccb4 100%);
+}
+.ph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(28, 25, 21, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 25, 21, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.ph-label {
+  position: absolute;
+  inset: auto 14px 12px auto;
+  z-index: 1;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 21, 0.35);
 }
