@@ -15,57 +15,62 @@ export default function ContactPage() {
   return (
     <>
       <PageBanner
+        plate="04"
         eyebrow="Contact"
         title="Start the conversation"
-        lead="Tell us about your block, your brief or just the idea. We reply to every enquiry within one business day."
+        lead="Tell us about your block, your brief, or just the idea. We reply to every enquiry within one business day."
+        image="/images/service-outdoor.jpg"
+        alt="Timber deck meeting a dry-stone retaining wall and established garden beds"
       />
 
-      <section className="py-24">
-        <div className="container-x grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+      <section className="py-24 sm:py-32">
+        <div className="container-x grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <Reveal>
-            <p className="eyebrow">Direct</p>
-            <ul className="mt-6 space-y-6">
-              <li>
-                <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-foreground/50">
-                  Phone
-                </p>
+            <span className="label">Direct</span>
+
+            <ul className="mt-8">
+              <li className="border-t border-[var(--line)] py-6">
+                <span className="label label-muted">Phone</span>
                 <a
                   href={site.phoneHref}
-                  className="display mt-1 block text-3xl text-ink hover:text-accent-deep"
+                  className="display link-sweep mt-2 block text-3xl"
                 >
                   {site.phone}
                 </a>
               </li>
-              <li>
-                <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-foreground/50">
-                  Email
-                </p>
+              <li className="border-t border-[var(--line)] py-6">
+                <span className="label label-muted">Email</span>
                 <a
                   href={`mailto:${site.email}`}
-                  className="mt-1 block text-xl text-ink hover:text-accent-deep"
+                  className="link-sweep mt-2 block text-lg text-[var(--ink)]"
                 >
                   {site.email}
                 </a>
               </li>
-              <li>
-                <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-foreground/50">
-                  Based in
-                </p>
-                <p className="mt-1 text-xl text-ink">{site.locality}</p>
+              <li className="border-y border-[var(--line)] py-6">
+                <span className="label label-muted">Based in</span>
+                <p className="mt-2 text-lg text-[var(--ink)]">{site.locality}</p>
               </li>
             </ul>
 
-            <div className="mt-12 rounded-2xl border hairline bg-paper-2 p-7">
-              <p className="text-[14px] text-foreground/75">
-                {site.legalName} · ABN {site.abn}
-                <br />
-                {site.licence}
-              </p>
-            </div>
+            <p className="mt-10 text-[13.5px] leading-relaxed text-[var(--foreground)]/60">
+              {site.legalName} · ABN {site.abn}
+              <br />
+              {site.licence}
+            </p>
           </Reveal>
 
-          <Reveal delay={120}>
-            <ContactForm />
+          <Reveal delay={140}>
+            <div className="bg-[var(--paper-2)] p-8 sm:p-12">
+              <h2 className="display t-md">Send an enquiry</h2>
+              <p className="mt-3 text-[14.5px] text-[var(--foreground)]/70">
+                The more you can tell us about the block and the brief, the more
+                useful our first reply will be.
+              </p>
+              <div className="mt-8">
+                <ContactForm />
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>

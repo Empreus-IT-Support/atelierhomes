@@ -1,5 +1,6 @@
-// Elegant stand-in block used everywhere a client photo will eventually go.
-// Swap for <Image> once photography is supplied — see CONTENT-NOTES.md.
+// Elegant stand-in used ONLY on the Projects page, where we have no real
+// client work to show. Do not use stock photography here — that would
+// fabricate a portfolio. See CONTENT-NOTES.md.
 export default function Placeholder({
   label = "Photography to come",
   className = "",

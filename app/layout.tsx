@@ -1,21 +1,29 @@
 import type { Metadata } from "next";
-import { Fraunces, Figtree } from "next/font/google";
+import { Fraunces, Figtree, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
 const serif = Fraunces({
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-serif-display",
   display: "swap",
 });
 
 const sans = Figtree({
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-sans-body",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-mono-label",
   display: "swap",
 });
 
@@ -90,8 +98,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${sans.variable} h-full antialiased`}
+      className={`${serif.variable} ${sans.variable} ${mono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Reveal animations hide content until observed. Without JS there is
+            no observer, so paint everything immediately rather than blank. */}
+        <noscript>
+          <style>{`.reveal,.reveal-img{opacity:1!important;transform:none!important;clip-path:none!important}.rule-draw{transform:scaleX(1)!important}`}</style>
+        </noscript>
+      </head>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"

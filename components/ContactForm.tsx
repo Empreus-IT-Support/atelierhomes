@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const inputCls =
-  "w-full rounded-lg border border-ink/15 bg-paper px-4 py-3 text-[15px] text-ink placeholder:text-ink/40 outline-none transition-colors focus:border-accent-deep";
+  "w-full border-0 border-b border-[var(--line)] bg-transparent px-0 py-3.5 text-[15px] text-[var(--ink)] placeholder:text-[var(--foreground)]/45 outline-none transition-colors focus:border-[var(--accent-deep)]";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -38,9 +38,10 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-xl border border-accent-deep/30 bg-paper-2 p-8 text-center">
-        <h3 className="text-2xl">Thank you</h3>
-        <p className="mt-3 text-[15px] text-foreground/80">
+      <div className="border-t border-[var(--accent)] py-10 text-center">
+        <span className="label">Received</span>
+        <h3 className="display mt-4 text-3xl">Thank you</h3>
+        <p className="mt-4 text-[15px] text-[var(--foreground)]/80">
           Your enquiry has been received. We&apos;ll be in touch within one
           business day.
         </p>
@@ -113,7 +114,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex items-center rounded-full bg-ink px-8 py-3.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-paper transition-opacity hover:opacity-85 disabled:opacity-50"
+        className="btn btn-solid mt-2 disabled:opacity-50"
       >
         {status === "sending" ? "Sending…" : "Send enquiry"}
       </button>

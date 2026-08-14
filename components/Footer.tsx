@@ -4,57 +4,57 @@ import { nav, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 bg-ink text-paper">
-      <div className="container-x grid gap-12 py-16 md:grid-cols-3">
-        <div>
-          <Logo light />
-          <p className="mt-5 max-w-xs text-[15px] text-paper/70">
-            Architecturally considered custom homes, knockdown rebuilds and
-            renovations across Canberra and the ACT.
-          </p>
-        </div>
+    <footer className="section-dark">
+      <div className="container-x pb-14 pt-20 sm:pt-28">
+        <div className="grid gap-14 border-b border-[rgba(246,243,236,0.18)] pb-14 lg:grid-cols-[1.4fr_0.8fr_1fr]">
+          <div>
+            <Logo light />
+            <p className="mt-7 max-w-sm text-[15px] leading-relaxed text-[rgba(246,243,236,0.66)]">
+              Architecturally considered custom homes, knockdown rebuilds and
+              renovations across Canberra and the ACT.
+            </p>
+          </div>
 
-        <div>
-          <p className="eyebrow !text-accent">Explore</p>
-          <ul className="mt-5 space-y-3">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-[15px] text-paper/80 transition-colors hover:text-paper"
-                >
-                  {item.label}
-                </Link>
+          <div>
+            <span className="label label-light">Explore</span>
+            <ul className="mt-6 space-y-3">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="link-sweep text-[15px] text-[rgba(246,243,236,0.8)]"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <span className="label label-light">Get in touch</span>
+            <ul className="mt-6 space-y-3 text-[15px] text-[rgba(246,243,236,0.8)]">
+              <li>
+                <a href={site.phoneHref} className="link-sweep">
+                  {site.phone}
+                </a>
               </li>
-            ))}
-          </ul>
+              <li>
+                <a href={`mailto:${site.email}`} className="link-sweep">
+                  {site.email}
+                </a>
+              </li>
+              <li className="text-[rgba(246,243,236,0.55)]">{site.locality}</li>
+            </ul>
+          </div>
         </div>
 
-        <div>
-          <p className="eyebrow !text-accent">Get in touch</p>
-          <ul className="mt-5 space-y-3 text-[15px] text-paper/80">
-            <li>
-              <a href={site.phoneHref} className="hover:text-paper">
-                {site.phone}
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${site.email}`} className="hover:text-paper">
-                {site.email}
-              </a>
-            </li>
-            <li>{site.locality}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="border-t border-paper/15">
-        <div className="container-x flex flex-col gap-2 py-6 text-[13px] text-paper/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 pt-8 text-[12px] text-[rgba(246,243,236,0.45)] sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.name} · {site.legalName} · ABN{" "}
             {site.abn}
           </p>
-          <p>{site.licence}</p>
+          <p className="label label-light !text-[10px]">{site.licence}</p>
         </div>
       </div>
     </footer>

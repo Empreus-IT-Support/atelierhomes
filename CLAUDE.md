@@ -18,6 +18,14 @@ ACT Builder Licence 2018829.
   `components/Placeholder.tsx` — never fill it with stock, that would fake a portfolio
 - **`CONTENT-NOTES.md` is the source of truth for what is placeholder vs verified —
   read it before editing copy, and keep it updated**
-- Fonts: Fraunces (display serif) + Figtree (body), warm light palette,
-  bronze accent — tokens in `app/globals.css`
+- Design language is an **architectural monograph / drawing set**: full-bleed
+  dark image banner opening every page, oversized Fraunces serif headlines,
+  hairline rules, mono "plate" numbers (01/02, I/II) as the technical voice,
+  and dark `.section-dark` bands for rhythm
+- Fonts: Fraunces (display serif) + Figtree (body) + IBM Plex Mono (labels).
+  Warm paper palette, bronze accent — all tokens in `app/globals.css`
+- Use the utility classes (`.display`, `.t-hero/.t-xl/.t-lg/.t-md`, `.label`,
+  `.plate`, `.btn`, `.rule`, `.link-sweep`) rather than ad-hoc Tailwind type
+- The header is transparent with light text over the banner and inverts to
+  solid paper on scroll — every page therefore needs a dark banner up top
 - No fabricated testimonials, project names, or awards. Ever.

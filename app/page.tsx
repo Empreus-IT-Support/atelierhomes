@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import Media from "@/components/Media";
@@ -6,20 +7,28 @@ import { site } from "@/lib/site";
 
 const services = [
   {
+    n: "01",
     title: "Custom new homes",
-    text: "One-off homes designed around your block, your brief and the way you actually live — built once, built properly.",
+    text: "One-off homes designed around your block, your brief and the way you actually live.",
+    href: "/services",
   },
   {
+    n: "02",
     title: "Knockdown rebuilds",
-    text: "Love the street but not the house? We manage demolition through to handover so you can stay in the suburb you chose.",
+    text: "Love the street but not the house? Demolition through to handover, managed end to end.",
+    href: "/services",
   },
   {
+    n: "03",
     title: "Extensions & renovations",
-    text: "Considered additions and whole-home renovations that respect what's there and transform how it works.",
+    text: "Considered additions that respect what's there and transform how it works.",
+    href: "/services",
   },
   {
-    title: "Outdoor & landscape works",
-    text: "Alfresco living, structural landscaping and the finishing details that tie a home to its site.",
+    n: "04",
+    title: "Outdoor & landscape",
+    text: "Alfresco living, structural landscaping and the details that tie a home to its site.",
+    href: "/services",
   },
 ];
 
@@ -27,171 +36,244 @@ const steps = [
   {
     n: "01",
     title: "Conversation",
-    text: "We start with your block, budget and brief — honest advice before any commitment.",
+    text: "Your block, budget and brief — honest advice before any commitment is made.",
   },
   {
     n: "02",
     title: "Design & detail",
-    text: "Plans, selections and a transparent fixed proposal. No allowances designed to blow out.",
+    text: "Plans, selections and a transparent proposal. No allowances designed to blow out.",
   },
   {
     n: "03",
     title: "Build",
-    text: "One point of contact, a tidy site and scheduled updates from slab to lock-up to fit-off.",
+    text: "One point of contact, a tidy site, and scheduled updates from slab to fit-off.",
   },
   {
     n: "04",
-    title: "Handover & beyond",
-    text: "A walkthrough without surprises, and a builder who still answers the phone afterwards.",
+    title: "Handover",
+    text: "A walkthrough without surprises, and a builder who still answers the phone after.",
   },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-paper-2 pt-[72px]">
-        <div className="container-x grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[1.1fr_0.9fr]">
+      {/* ---------- Hero ---------- */}
+      <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
+        <div className="scrim absolute inset-0 -z-10">
+          <Image
+            src="/images/hero-home.jpg"
+            alt="Contemporary Australian home with brick walls, a raked roofline and a hardwood deck"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+
+        <div className="container-x w-full pb-14 pt-36">
           <Reveal>
-            <p className="eyebrow">Canberra custom home builder</p>
-            <h1 className="display mt-5 text-5xl sm:text-6xl lg:text-7xl">
-              Homes built like they were drawn.
-            </h1>
-            <p className="mt-7 max-w-xl text-[17px] text-foreground/80">
-              Atelier Homes crafts architecturally considered new homes,
-              knockdown rebuilds and renovations across the ACT — with the
-              care of a small team and the discipline of a licensed builder
-              who has been at it since {site.established}.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-ink px-8 py-3.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-paper transition-opacity hover:opacity-85"
-              >
-                Start a conversation
-              </Link>
-              <Link
-                href="/projects"
-                className="inline-flex items-center rounded-full border border-ink/25 px-8 py-3.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:border-accent-deep hover:text-accent-deep"
-              >
-                View projects
-              </Link>
+            <div className="flex items-center gap-4">
+              <span className="h-px w-14 bg-[rgba(246,243,236,0.45)]" />
+              <span className="label label-light">
+                Canberra · Custom home builder
+              </span>
             </div>
           </Reveal>
-          <Reveal delay={150}>
-            <div className="relative">
-              <Media
-                src="/images/hero-home.jpg"
-                alt="Contemporary Australian home with brick walls, raked roofline and a hardwood deck"
-                className="aspect-[4/5] w-full rounded-2xl"
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                priority
-              />
-              <div className="absolute -bottom-6 -left-6 hidden rounded-xl border hairline bg-paper px-6 py-5 shadow-sm sm:block">
-                <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-accent-deep">
-                  {site.licence}
-                </p>
-                <p className="mt-1 text-[13px] text-foreground/70">
-                  Licensed &amp; insured · {site.locality}
-                </p>
+
+          <Reveal delay={120}>
+            <h1 className="display t-hero mt-8 max-w-[16ch] !text-[var(--paper)]">
+              Homes built like<br />they were <em className="italic !text-[var(--accent-light)]">drawn</em>.
+            </h1>
+          </Reveal>
+
+          <Reveal delay={240}>
+            <div className="mt-12 flex flex-col gap-10 border-t border-[rgba(246,243,236,0.2)] pt-8 lg:flex-row lg:items-end lg:justify-between">
+              <p className="max-w-md text-[16px] leading-relaxed text-[rgba(246,243,236,0.78)]">
+                Architecturally considered new homes, knockdown rebuilds and
+                renovations across the ACT — built by a licensed builder with
+                trade roots going back to {site.established}.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <Link href="/contact" className="btn btn-light">
+                  Start a conversation
+                </Link>
+                <Link
+                  href="/projects"
+                  className="label label-light link-sweep !tracking-[0.2em]"
+                >
+                  View projects
+                </Link>
               </div>
             </div>
           </Reveal>
         </div>
+
+        <div className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 lg:block">
+          <div className="scroll-cue" />
+        </div>
       </section>
 
-      {/* Intro strip */}
-      <section className="border-b hairline">
-        <div className="container-x grid gap-8 py-14 sm:grid-cols-3">
+      {/* ---------- Credentials strip ---------- */}
+      <section className="border-b border-[var(--line)] bg-[var(--paper-2)]">
+        <div className="container-x grid gap-px sm:grid-cols-3">
           {[
-            ["Est. " + site.established, "A decade of trade experience behind every build"],
+            ["Est. " + site.established, "A decade of trade behind every build"],
             ["Licensed", site.licence],
-            ["Local", "Canberra born, Canberra based, Canberra built"],
+            ["Local", "Canberra born, based and built"],
           ].map(([big, small], i) => (
-            <Reveal key={big} delay={i * 100}>
-              <p className="display text-3xl">{big}</p>
-              <p className="mt-2 text-[14px] text-foreground/70">{small}</p>
+            <Reveal key={big} delay={i * 110}>
+              <div className="py-12 sm:px-8 sm:first:pl-0">
+                <p className="display t-md">{big}</p>
+                <p className="mt-3 text-[14px] leading-relaxed text-[var(--foreground)]/70">
+                  {small}
+                </p>
+              </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-24">
-        <div className="container-x">
-          <SectionHeading
-            eyebrow="What we do"
-            title="Four ways we build"
-            lead="Every project gets the same treatment: straight answers, careful detailing and a build schedule we actually keep."
-          />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2">
-            {services.map((s, i) => (
-              <Reveal key={s.title} delay={i * 80}>
-                <div className="group h-full rounded-2xl border hairline bg-paper p-8 transition-colors hover:border-accent-deep/50">
-                  <span className="display text-[15px] text-accent-deep">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-4 text-2xl">{s.title}</h3>
-                  <p className="mt-3 text-[15px] text-foreground/75">{s.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal className="mt-10">
-            <Link
-              href="/services"
-              className="text-[14px] font-semibold uppercase tracking-[0.14em] text-accent-deep hover:underline"
-            >
-              More about our services →
-            </Link>
+      {/* ---------- Manifesto ---------- */}
+      <section className="py-28 sm:py-36">
+        <div className="container-narrow text-center">
+          <Reveal>
+            <span className="label">Atelier</span>
+            <p className="display t-lg mt-8 !leading-[1.15]">
+              A workshop where things are made by hand, with intent.
+              <span className="text-[var(--foreground)]/45">
+                {" "}That is how we build houses — slowly, deliberately, and
+                only a few at a time.
+              </span>
+            </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="bg-paper-2 py-24">
+      {/* ---------- Services index ---------- */}
+      <section className="pb-8">
         <div className="container-x">
           <SectionHeading
+            plate="I"
+            eyebrow="What we do"
+            title="Four ways we build"
+            lead="Every project gets the same treatment: straight answers, careful detailing, and a schedule we actually keep."
+          />
+
+          <div className="mt-16">
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={i * 60}>
+                <Link
+                  href={s.href}
+                  className="group grid grid-cols-1 items-baseline gap-4 border-t border-[var(--line)] py-9 transition-colors hover:bg-[var(--paper-2)] md:grid-cols-[80px_1fr_1.1fr_40px] md:gap-8 md:px-4"
+                >
+                  <span className="plate">{s.n}</span>
+                  <h3 className="display text-3xl transition-colors group-hover:text-[var(--accent-deep)] sm:text-4xl">
+                    {s.title}
+                  </h3>
+                  <p className="text-[15px] leading-relaxed text-[var(--foreground)]/72">
+                    {s.text}
+                  </p>
+                  <span className="label hidden justify-self-end transition-transform duration-500 group-hover:translate-x-1 md:block">
+                    →
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+            <div className="rule" />
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Feature split ---------- */}
+      <section className="py-28 sm:py-36">
+        <div className="container-x grid items-center gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
+          <Media
+            src="/images/about-craft.jpg"
+            alt="Timber-framed interior of a home under construction, light falling down the hallway"
+            className="aspect-[4/5] w-full"
+            sizes="(max-width: 1024px) 100vw, 45vw"
+          />
+          <Reveal>
+            <span className="label">Why us</span>
+            <h2 className="display t-lg mt-6">
+              The problems get solved on paper, not on site.
+            </h2>
+            <div className="mt-8 space-y-5 text-[16px] leading-relaxed text-[var(--foreground)]/80">
+              <p>
+                A builder who has personally formed, poured and finished the
+                hard parts of a house reads a set of drawings differently. We
+                catch the clashes before they cost you.
+              </p>
+              <p>
+                That means fewer variations, fewer arguments, and a build that
+                lands where the budget said it would.
+              </p>
+            </div>
+            <div className="mt-10">
+              <Link href="/about" className="btn btn-ghost">
+                About the studio
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Process (dark) ---------- */}
+      <section className="section-dark py-28 sm:py-36">
+        <div className="container-x">
+          <SectionHeading
+            plate="II"
             eyebrow="How it works"
             title="A build without the drama"
+            light
           />
-          <div className="mt-14 grid gap-10 md:grid-cols-4">
+          <div className="mt-16 grid gap-px md:grid-cols-4">
             {steps.map((step, i) => (
-              <Reveal key={step.n} delay={i * 100}>
-                <p className="display text-5xl text-accent/70">{step.n}</p>
-                <h3 className="mt-4 text-xl">{step.title}</h3>
-                <p className="mt-2 text-[14px] text-foreground/75">{step.text}</p>
+              <Reveal key={step.n} delay={i * 110}>
+                <div className="border-t border-[rgba(246,243,236,0.2)] pt-8 md:pr-8">
+                  <span className="plate !text-[var(--accent-light)]">
+                    {step.n}
+                  </span>
+                  <h3 className="display mt-5 text-2xl">{step.title}</h3>
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-[rgba(246,243,236,0.68)]">
+                    {step.text}
+                  </p>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24">
+      {/* ---------- CTA ---------- */}
+      <section className="py-28 sm:py-36">
         <div className="container-x">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-ink px-8 py-16 text-center sm:px-16">
-              <span
-                aria-hidden
-                className="watermark absolute -top-6 left-1/2 -translate-x-1/2 text-[180px] !text-paper/5"
-              >
-                Atelier
-              </span>
-              <h2 className="display relative text-4xl text-paper sm:text-5xl">
-                Have a block, a plan, or just an idea?
-              </h2>
-              <p className="relative mx-auto mt-5 max-w-xl text-[16px] text-paper/75">
-                Tell us where you&apos;re at. We&apos;ll give you an honest read on
-                feasibility, budget and timing — no obligation.
+            <div className="flex items-center gap-4">
+              <span className="plate">III</span>
+              <span className="h-px w-12 bg-[var(--line)]" />
+              <span className="label">Next step</span>
+            </div>
+            <h2 className="display t-xl mt-8 max-w-[18ch]">
+              Have a block, a plan, or just an idea?
+            </h2>
+            <div className="mt-12 flex flex-col gap-8 border-t border-[var(--line)] pt-8 sm:flex-row sm:items-end sm:justify-between">
+              <p className="max-w-md text-[16px] leading-relaxed text-[var(--foreground)]/75">
+                Tell us where you&apos;re at. We&apos;ll give you an honest read
+                on feasibility, budget and timing — no obligation.
               </p>
-              <div className="relative mt-9">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center rounded-full bg-paper px-8 py-3.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-ink transition-opacity hover:opacity-90"
-                >
+              <div className="flex flex-wrap items-center gap-6">
+                <Link href="/contact" className="btn btn-solid">
                   Get in touch
                 </Link>
+                <a
+                  href={site.phoneHref}
+                  className="display text-3xl link-sweep"
+                >
+                  {site.phone}
+                </a>
               </div>
             </div>
           </Reveal>

@@ -43,7 +43,10 @@ client's photo in with the same filename — no code change needed.
 | `service-custom-homes.jpg` | photo-1644123074050-5ac5f8996b79 | Services 01 |
 | `service-knockdown-rebuild.jpg` | photo-1676802540678-2dceb1820113 | Services 02 |
 | `service-renovations.jpg` | photo-1682888813913-e13f18692019 | Services 03 |
-| `service-outdoor.jpg` | photo-1734079692147-c6fc9438a2d0 | Services 04 |
+| `service-outdoor.jpg` | photo-1734079692147-c6fc9438a2d0 | Services 04 + Contact banner |
+| `banner-about.jpg` | photo-1636999021955-a23cfd2676a8 | About banner |
+| `banner-services.jpg` | photo-1653145074035-fbcce79fee76 | Services banner |
+| `banner-projects.jpg` | photo-1701422052384-947b60e17ebe | Projects banner |
 
 Deliberately avoided CGI/AI architectural renders — Unsplash's "modern house"
 results are full of them and a builder would spot them instantly. Every image
@@ -78,7 +81,7 @@ are identifiably Australian.
 ## Before go-live
 
 - [ ] Client reviews all copy
-- [ ] **Replace all six stock images with the client's own photography**
+- [ ] **Replace all nine stock images with the client's own photography**
 - [ ] Real projects + photography on the Projects page
 - [ ] Domain email created; `CONTACT_TO` + Resend domain verified
 - [ ] Confirm phone number

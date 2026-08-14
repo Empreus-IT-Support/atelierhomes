@@ -11,58 +11,74 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
 };
 
-// PLACEHOLDER GRID — real projects, photography and captions to come from client.
-// See CONTENT-NOTES.md. Do not invent project names/suburbs before client sign-off.
+// PLACEHOLDER GRID — real projects, photography and captions to come from the
+// client. See CONTENT-NOTES.md. Never invent project names, suburbs or dates,
+// and never fill these with stock photography.
 const placeholders = [
-  { label: "Custom new home", aspect: "aspect-[4/5]" },
-  { label: "Knockdown rebuild", aspect: "aspect-[4/3]" },
-  { label: "Extension & renovation", aspect: "aspect-[4/3]" },
-  { label: "Custom new home", aspect: "aspect-[4/5]" },
-  { label: "Outdoor & landscape", aspect: "aspect-[4/5]" },
-  { label: "Renovation", aspect: "aspect-[4/3]" },
+  { n: "01", label: "Custom new home", aspect: "aspect-[4/5]" },
+  { n: "02", label: "Knockdown rebuild", aspect: "aspect-[4/3]" },
+  { n: "03", label: "Extension & renovation", aspect: "aspect-[4/3]" },
+  { n: "04", label: "Custom new home", aspect: "aspect-[4/5]" },
+  { n: "05", label: "Outdoor & landscape", aspect: "aspect-[4/5]" },
+  { n: "06", label: "Renovation", aspect: "aspect-[4/3]" },
 ];
 
 export default function ProjectsPage() {
   return (
     <>
       <PageBanner
+        plate="03"
         eyebrow="Projects"
         title="Built work"
-        lead="A selection of recent homes and renovations across Canberra. Full project stories and photography are being prepared — check back soon, or ask us to walk you through completed work in person."
+        lead="Full project stories and photography are being prepared. In the meantime, we are happy to walk you through completed work in person."
+        image="/images/banner-projects.jpg"
+        alt="Renovated living room with a slatted timber feature wall and bay window"
       />
 
-      <section className="py-24">
+      <section className="py-24 sm:py-32">
         <div className="container-x">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal>
+            <div className="flex flex-wrap items-center justify-between gap-6 border-b border-[var(--line)] pb-6">
+              <span className="label label-muted">
+                Index — six projects in preparation
+              </span>
+              <span className="label label-muted">Canberra, ACT</span>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
             {placeholders.map((p, i) => (
-              <Reveal key={i} delay={(i % 3) * 80}>
-                <figure className="group">
-                  <Placeholder
-                    className={`${p.aspect} w-full rounded-2xl transition-transform duration-500 group-hover:scale-[1.01]`}
-                  />
-                  <figcaption className="mt-4">
-                    <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-accent-deep">
-                      {p.label}
-                    </p>
-                    <p className="mt-1 text-[14px] text-foreground/60">
-                      Canberra, ACT — full story coming soon
-                    </p>
+              <Reveal key={p.n} delay={(i % 3) * 90}>
+                <figure>
+                  <Placeholder className={`${p.aspect} w-full`} />
+                  <figcaption className="mt-5 flex items-baseline gap-4 border-t border-[var(--line)] pt-4">
+                    <span className="plate">{p.n}</span>
+                    <span>
+                      <span className="display block text-xl">{p.label}</span>
+                      <span className="mt-1 block text-[13px] text-[var(--foreground)]/55">
+                        Story coming soon
+                      </span>
+                    </span>
                   </figcaption>
                 </figure>
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          <Reveal className="mt-16 text-center">
-            <p className="mx-auto max-w-xl text-[16px] text-foreground/80">
-              The best way to judge a builder is to stand in something they&apos;ve
-              built. We&apos;re happy to arrange a visit to a completed project.
+      <section className="section-dark py-24 sm:py-32">
+        <div className="container-narrow text-center">
+          <Reveal>
+            <h2 className="display t-lg">
+              The best way to judge a builder is to stand in something they
+              built.
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-[rgba(246,243,236,0.72)]">
+              We are happy to arrange a visit to a completed project.
             </p>
-            <div className="mt-7">
-              <Link
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-ink px-8 py-3.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-paper transition-opacity hover:opacity-85"
-              >
+            <div className="mt-10">
+              <Link href="/contact" className="btn btn-light">
                 Arrange a walkthrough
               </Link>
             </div>
