@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
-import Placeholder from "@/components/Placeholder";
+import Media from "@/components/Media";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -16,21 +16,29 @@ const services = [
     title: "Custom new homes",
     text: "A home designed for your block — solar orientation, levels, views and the way your family actually lives. We work alongside your architect or designer (or introduce you to ours), then carry the drawings through to a finished home without value-engineering the soul out of them.",
     points: ["Architect-designed builds", "Difficult and sloping blocks", "Energy-efficient construction"],
+    image: "/images/service-custom-homes.jpg",
+    alt: "Entry of a dark brick home with hardwood deck steps and native planting",
   },
   {
     title: "Knockdown rebuilds",
     text: "The established suburbs of Canberra have the best blocks and the tiredest housing stock. We manage the whole sequence — demolition approvals, site clearing, and a new home built to make the most of land you already own.",
     points: ["Demolition to handover", "Established suburb specialists", "Dual occupancy potential"],
+    image: "/images/service-knockdown-rebuild.jpg",
+    alt: "New roof trusses standing against a clear blue sky",
   },
   {
     title: "Extensions & renovations",
     text: "Adding to a home is harder than starting fresh — junctions between old and new are where renovations succeed or fail. We bring new-build discipline to extensions, second storeys and whole-home transformations.",
     points: ["Second storey additions", "Living and kitchen extensions", "Whole-home renovations"],
+    image: "/images/service-renovations.jpg",
+    alt: "Renovated open-plan kitchen with a stone island bench and pendant lighting",
   },
   {
     title: "Outdoor & landscape works",
     text: "Our roots are in structural landscaping and concrete, and it shows in how we finish a site: alfresco areas, retaining, driveways and hardscaping built with the same care as the house itself.",
     points: ["Alfresco and outdoor living", "Retaining and structural landscaping", "Driveways and hardscape"],
+    image: "/images/service-outdoor.jpg",
+    alt: "Timber deck meeting a dry-stone retaining wall and established garden beds",
   },
 ];
 
@@ -53,9 +61,10 @@ export default function ServicesPage() {
               }`}
             >
               <Reveal>
-                <Placeholder
+                <Media
+                  src={s.image}
+                  alt={s.alt}
                   className="aspect-[3/2] w-full rounded-2xl"
-                  label={`${s.title} — photography to come`}
                 />
               </Reveal>
               <Reveal delay={120}>

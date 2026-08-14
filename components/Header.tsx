@@ -18,8 +18,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => setOpen(false), [pathname]);
-
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -91,6 +89,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => setOpen(false)}
                 className="py-3 text-[15px] font-semibold uppercase tracking-[0.14em] text-ink/80"
               >
                 {item.label}
@@ -98,6 +97,7 @@ export default function Header() {
             ))}
             <a
               href={site.phoneHref}
+              onClick={() => setOpen(false)}
               className="mt-2 py-3 text-[15px] font-semibold text-accent-deep"
             >
               {site.phone}

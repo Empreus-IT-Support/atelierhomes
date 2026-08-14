@@ -24,12 +24,39 @@ text. The client must review everything.
 | "Handful of homes a year", process copy, values copy | about, home | Drafted marketing copy — client to approve or rewrite |
 | Established 2015 | home, about | Company registration date — but under a former name; confirm client is happy to claim it |
 
+## Photography — LICENSED STOCK STAND-INS, NOT CLIENT WORK
+
+⚠️ **Every photo on this site is licensed stock, not a Rexley/Atelier build.**
+They are mood/atmosphere imagery so the site reads as finished for the pitch.
+**Nothing is captioned or implied as a completed Atelier Homes project**, and
+the Projects page deliberately still shows `Placeholder` blocks rather than
+stock homes — do not "finish" it with stock, that would fabricate a portfolio.
+
+Source: Unsplash (free commercial use, no attribution required). All files in
+`/public/images`, rendered via `components/Media.tsx`. To replace, drop the
+client's photo in with the same filename — no code change needed.
+
+| File | Unsplash ID | Used on |
+| --- | --- | --- |
+| `hero-home.jpg` | photo-1666004095305-300183c896ed | Home hero |
+| `about-craft.jpg` | photo-1715760374522-a609a0c2f65e | About |
+| `service-custom-homes.jpg` | photo-1644123074050-5ac5f8996b79 | Services 01 |
+| `service-knockdown-rebuild.jpg` | photo-1676802540678-2dceb1820113 | Services 02 |
+| `service-renovations.jpg` | photo-1682888813913-e13f18692019 | Services 03 |
+| `service-outdoor.jpg` | photo-1734079692147-c6fc9438a2d0 | Services 04 |
+
+Deliberately avoided CGI/AI architectural renders — Unsplash's "modern house"
+results are full of them and a builder would spot them instantly. Every image
+above was visually checked and is a real photograph; the hero and Services 01
+are identifiably Australian.
+
 ## Missing entirely (client must supply)
 
-- **All photography** — every image is a styled `Placeholder` block
-  (`components/Placeholder.tsx`). Swap for `next/image` when photos arrive.
+- **Real project photography** — the six stock images above must be replaced
+  with the client's own work before launch, and the Projects page still has
+  no real content at all.
 
-  **Already checked — there is no image library to salvage.** The only photos
+  **Already checked — there is no client image library to salvage.** The only photos
   that have ever existed publicly are 9 on the dormant GC Construction
   Facebook page, and none are usable:
   - 8 from 29 Nov 2016 — phone snaps of a slab pour (reo mesh, pump truck,
@@ -51,7 +78,8 @@ text. The client must review everything.
 ## Before go-live
 
 - [ ] Client reviews all copy
-- [ ] Real photography in place of Placeholder blocks
+- [ ] **Replace all six stock images with the client's own photography**
+- [ ] Real projects + photography on the Projects page
 - [ ] Domain email created; `CONTACT_TO` + Resend domain verified
 - [ ] Confirm phone number
 - [ ] Point atelierhomes.com.au DNS from Netregistry parking to Vercel

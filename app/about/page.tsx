@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageBanner from "@/components/PageBanner";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import Placeholder from "@/components/Placeholder";
+import Media from "@/components/Media";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -40,7 +40,11 @@ export default function AboutPage() {
       <section className="py-24">
         <div className="container-x grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
-            <Placeholder className="aspect-[4/3] w-full rounded-2xl" label="Team / site photography to come" />
+            <Media
+              src="/images/about-craft.jpg"
+              alt="Timber-framed interior of a home under construction, light falling down the hallway"
+              className="aspect-[4/3] w-full rounded-2xl"
+            />
           </Reveal>
           <Reveal delay={120}>
             <p className="eyebrow">Our story</p>

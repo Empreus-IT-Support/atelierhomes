@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import Placeholder from "@/components/Placeholder";
+import Media from "@/components/Media";
 import { site } from "@/lib/site";
 
 const services = [
@@ -80,7 +80,13 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={150}>
             <div className="relative">
-              <Placeholder className="aspect-[4/5] w-full rounded-2xl" label="Hero photography to come" />
+              <Media
+                src="/images/hero-home.jpg"
+                alt="Contemporary Australian home with brick walls, raked roofline and a hardwood deck"
+                className="aspect-[4/5] w-full rounded-2xl"
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                priority
+              />
               <div className="absolute -bottom-6 -left-6 hidden rounded-xl border hairline bg-paper px-6 py-5 shadow-sm sm:block">
                 <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-accent-deep">
                   {site.licence}

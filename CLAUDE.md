@@ -13,7 +13,9 @@ ACT Builder Licence 2018829.
 ## Conventions
 
 - Business details live in `lib/site.ts` — never hardcode phone/email/ABN in pages
-- All imagery is `components/Placeholder.tsx` until client photography arrives
+- Photos are **licensed stock stand-ins** rendered via `components/Media.tsx`
+  (files in `/public/images`). The Projects page intentionally still uses
+  `components/Placeholder.tsx` — never fill it with stock, that would fake a portfolio
 - **`CONTENT-NOTES.md` is the source of truth for what is placeholder vs verified —
   read it before editing copy, and keep it updated**
 - Fonts: Fraunces (display serif) + Figtree (body), warm light palette,
