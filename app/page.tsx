@@ -3,6 +3,7 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import Media from "@/components/Media";
+import Marquee from "@/components/Marquee";
 import { site } from "@/lib/site";
 
 const services = [
@@ -60,7 +61,7 @@ export default function HomePage() {
     <>
       {/* ---------- Hero ---------- */}
       <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
-        <div className="scrim absolute inset-0 -z-10">
+        <div className="scrim kenburns absolute inset-0 -z-10 overflow-hidden">
           <Image
             src="/images/hero-home.jpg"
             alt="Contemporary Australian home with brick walls, a raked roofline and a hardwood deck"
@@ -117,16 +118,23 @@ export default function HomePage() {
 
       {/* ---------- Credentials strip ---------- */}
       <section className="border-b border-[var(--line)] bg-[var(--paper-2)]">
-        <div className="container-x grid gap-px sm:grid-cols-3">
+        <div className="container-x grid sm:grid-cols-3">
           {[
-            ["Est. " + site.established, "A decade of trade behind every build"],
-            ["Licensed", site.licence],
-            ["Local", "Canberra born, based and built"],
-          ].map(([big, small], i) => (
+            ["Est.", String(site.established), "A decade of trade behind every build"],
+            ["Licence", "2018829", "Active ACT builder licence"],
+            ["Built in", "Canberra", "Born, based and building here"],
+          ].map(([kicker, big, small], i) => (
             <Reveal key={big} delay={i * 110}>
-              <div className="py-12 sm:px-8 sm:first:pl-0">
-                <p className="display t-md">{big}</p>
-                <p className="mt-3 text-[14px] leading-relaxed text-[var(--foreground)]/70">
+              <div
+                className={`py-14 sm:px-10 sm:first:pl-0 ${
+                  i > 0 ? "sm:border-l sm:border-[var(--line)]" : ""
+                } ${i > 0 ? "border-t border-[var(--line)] sm:border-t-0" : ""}`}
+              >
+                <span className="label label-muted">{kicker}</span>
+                <p className="display mt-4 text-[clamp(2.25rem,4vw,3.25rem)]">
+                  {big}
+                </p>
+                <p className="mt-4 max-w-[24ch] text-[14px] leading-relaxed text-[var(--foreground)]/70">
                   {small}
                 </p>
               </div>
@@ -135,12 +143,26 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ---------- Marquee band ---------- */}
+      <section className="border-b border-[var(--line)] py-10">
+        <Marquee
+          items={[
+            "Custom new homes",
+            "Knockdown rebuilds",
+            "Extensions",
+            "Renovations",
+            "Outdoor & landscape",
+            "Canberra ACT",
+          ]}
+        />
+      </section>
+
       {/* ---------- Manifesto ---------- */}
       <section className="py-28 sm:py-36">
-        <div className="container-narrow text-center">
+        <div className="container-narrow">
           <Reveal>
             <span className="label">Atelier</span>
-            <p className="display t-lg mt-8 !leading-[1.15]">
+            <p className="dropcap display t-lg mt-8 !leading-[1.2]">
               A workshop where things are made by hand, with intent.
               <span className="text-[var(--foreground)]/45">
                 {" "}That is how we build houses — slowly, deliberately, and

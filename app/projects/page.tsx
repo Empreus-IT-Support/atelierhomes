@@ -96,8 +96,12 @@ export default function ProjectsPage() {
             {/* Deliberately NOT wrapped in <Reveal>: that sets opacity 0 until
                 an observer fires, which is what previously left the grid
                 blank. Images always paint. */}
-            {projects.map((p) => (
-              <figure key={p.n}>
+            {projects.map((p, i) => (
+              <figure
+                key={p.n}
+                /* stagger the middle column for editorial rhythm */
+                className={i % 3 === 1 ? "lg:mt-16" : ""}
+              >
                 <Media
                   src={p.image}
                   alt={p.alt}

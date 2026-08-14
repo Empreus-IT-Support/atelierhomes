@@ -57,6 +57,14 @@ export default function Footer() {
           <p className="label label-light !text-[10px]">{site.licence}</p>
         </div>
       </div>
+
+      {/* oversized wordmark, cropped at the baseline */}
+      <div
+        className="container-x -mb-[0.16em] overflow-hidden pt-6"
+        aria-hidden
+      >
+        <p className="wordmark">Atelier Homes</p>
+      </div>
     </footer>
   );
 }

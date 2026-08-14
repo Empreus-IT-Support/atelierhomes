@@ -256,6 +256,79 @@ textarea:-webkit-autofill {
 .section-dark h2,
 .section-dark h3 { color: var(--paper); }
 
+/* ================= paper grain =================
+   Fixed tactile overlay. Purely decorative: pointer-events none, and it
+   never affects whether content is painted. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.28'/%3E%3C/svg%3E");
+}
+
+/* ================= slow hero drift ================= */
+.kenburns img {
+  animation: kb 28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: 55% 45%;
+}
+@keyframes kb {
+  from { transform: scale(1.09); }
+  to { transform: scale(1); }
+}
+
+/* ================= marquee band ================= */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 46s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+  padding-inline: clamp(14px, 2.6vw, 32px);
+}
+
+/* ================= drop cap ================= */
+.dropcap::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 3.6em;
+  line-height: 0.78;
+  padding-right: 0.09em;
+  padding-top: 0.06em;
+  color: var(--accent-deep);
+}
+
+/* ================= oversized footer wordmark ================= */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(4.5rem, 21vw, 20rem);
+  line-height: 0.72;
+  letter-spacing: -0.045em;
+  color: rgba(246, 243, 236, 0.07);
+  user-select: none;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenburns img { animation: none; }
+  .marquee-track { animation: none; }
+}
+
 /* ================= misc ================= */
 .watermark {
   font-family: var(--font-display);

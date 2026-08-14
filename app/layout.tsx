@@ -112,6 +112,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <div className="grain" aria-hidden />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
