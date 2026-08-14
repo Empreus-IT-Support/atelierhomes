@@ -28,9 +28,13 @@ text. The client must review everything.
 
 ⚠️ **Every photo on this site is licensed stock, not a Rexley/Atelier build.**
 They are mood/atmosphere imagery so the site reads as finished for the pitch.
-**Nothing is captioned or implied as a completed Atelier Homes project**, and
-the Projects page deliberately still shows `Placeholder` blocks rather than
-stock homes — do not "finish" it with stock, that would fabricate a portfolio.
+
+The Projects page now also uses stock (client asked for no blank image
+slots anywhere). To keep that honest it carries a visible line — "Imagery on
+this page is indicative of the work we do. Photography of our own completed
+projects is currently being prepared." — and captions describe only the TYPE
+of work. **Do not remove that line while stock images are in place, and never
+add invented project names, suburbs, dates, values or client quotes.**
 
 Source: Unsplash (free commercial use, no attribution required). All files in
 `/public/images`, rendered via `components/Media.tsx`. To replace, drop the
@@ -47,6 +51,12 @@ client's photo in with the same filename — no code change needed.
 | `banner-about.jpg` | photo-1636999021955-a23cfd2676a8 | About banner |
 | `banner-services.jpg` | photo-1653145074035-fbcce79fee76 | Services banner |
 | `banner-projects.jpg` | photo-1701422052384-947b60e17ebe | Projects banner |
+| `project-01.jpg` | photo-1666000346172-8e7e87547d2a | Projects 01 (AU bungalow) |
+| `project-02.jpg` | photo-1581345187185-8bd48eb6dca6 | Projects 02 |
+| `project-03.jpg` | photo-1502005097973-6a7082348e28 | Projects 03 |
+| `project-04.jpg` | photo-1634255970497-78ffb2b08ae8 | Projects 04 |
+| `project-05.jpg` | photo-1633330948542-0b3bdeefcdb3 | Projects 05 |
+| `project-06.jpg` | photo-1631048498692-af6262577031 | Projects 06 |
 
 Deliberately avoided CGI/AI architectural renders — Unsplash's "modern house"
 results are full of them and a builder would spot them instantly. Every image
@@ -81,8 +91,9 @@ are identifiably Australian.
 ## Before go-live
 
 - [ ] Client reviews all copy
-- [ ] **Replace all nine stock images with the client's own photography**
-- [ ] Real projects + photography on the Projects page
+- [ ] **Replace all 15 stock images with the client's own photography**
+- [ ] Real projects on the Projects page, then delete the "indicative
+      imagery" line once the photos are genuinely theirs
 - [ ] Domain email created; `CONTACT_TO` + Resend domain verified
 - [ ] Confirm phone number
 - [ ] Point atelierhomes.com.au DNS from Netregistry parking to Vercel

@@ -14,8 +14,11 @@ ACT Builder Licence 2018829.
 
 - Business details live in `lib/site.ts` — never hardcode phone/email/ABN in pages
 - Photos are **licensed stock stand-ins** rendered via `components/Media.tsx`
-  (files in `/public/images`). The Projects page intentionally still uses
-  `components/Placeholder.tsx` — never fill it with stock, that would fake a portfolio
+  (files in `/public/images`), including on Projects — which therefore carries
+  a visible "indicative imagery" line that must stay until real photos land
+- **Never wrap `<Media>` in `<Reveal>`.** `Reveal` sets `opacity: 0` until an
+  observer fires; doing this twice left every photo invisible. Images must
+  paint regardless of JS — animation may enhance, never gate visibility
 - **`CONTENT-NOTES.md` is the source of truth for what is placeholder vs verified —
   read it before editing copy, and keep it updated**
 - Design language is an **architectural monograph / drawing set**: full-bleed

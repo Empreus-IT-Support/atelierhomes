@@ -104,7 +104,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Reveal animations hide content until observed. Without JS there is
             no observer, so paint everything immediately rather than blank. */}
         <noscript>
-          <style>{`.reveal,.reveal-img{opacity:1!important;transform:none!important;clip-path:none!important}.rule-draw{transform:scaleX(1)!important}`}</style>
+          <style>{`.reveal{opacity:1!important;transform:none!important}.rule-draw{transform:scaleX(1)!important}`}</style>
         </noscript>
       </head>
       <body className="min-h-full flex flex-col">
