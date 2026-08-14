@@ -28,6 +28,19 @@ text. The client must review everything.
 
 - **All photography** — every image is a styled `Placeholder` block
   (`components/Placeholder.tsx`). Swap for `next/image` when photos arrive.
+
+  **Already checked — there is no image library to salvage.** The only photos
+  that have ever existed publicly are 9 on the dormant GC Construction
+  Facebook page, and none are usable:
+  - 8 from 29 Nov 2016 — phone snaps of a slab pour (reo mesh, pump truck,
+    wet concrete). Construction-stage, not finished homes. Max ~960px, soft
+    and blown out. Two contain **identifiable faces** of workers, and one
+    shows a third party's branded truck (Monaro Concrete Pumping).
+  - 1 from 23 Aug 2022 — a low-res photo of the **old GC logo**, i.e. the
+    previous brand, not Atelier Homes.
+
+  Wrong subject, wrong brand, wrong quality, plus privacy issues. Do not use
+  them. Client photography is a hard blocker for launch.
 - **Projects** — the projects page is a clearly-labelled placeholder grid.
   No project names, suburbs or dates were invented. Need 4–8 real projects
   with photos and one-paragraph stories.
