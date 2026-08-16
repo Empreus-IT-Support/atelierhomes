@@ -7,8 +7,12 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a conversation with Atelier Homes — custom home builder in Canberra, ACT. Call, email or send an enquiry.",
+    "Start a conversation with Atelier Homes, custom home builder in Canberra, ACT. Call, email or send an enquiry.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    url: "/contact",
+    images: [{ url: "/images/service-outdoor.jpg", width: 1200, height: 630 }],
+  },
 };
 
 export default function ContactPage() {

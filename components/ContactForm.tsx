@@ -50,7 +50,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} noValidate className="relative space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="sr-only">
@@ -102,13 +102,28 @@ export default function ContactForm() {
           required
           rows={6}
           maxLength={5000}
-          placeholder="Tell us about your project — block, suburb, timeline, ideas *"
+          placeholder="Tell us about your project: block, suburb, timeline, ideas *"
           className={inputCls}
         />
       </div>
 
+      {/* Honeypot. Hidden from users and skipped by the tab order; the API
+          silently discards any submission that fills it. */}
+      <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="company">Company</label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {status === "error" ? (
-        <p className="text-[14px] text-red-700">{error}</p>
+        <p role="alert" className="text-[14px] text-red-700">
+          {error}
+        </p>
       ) : null}
 
       <button

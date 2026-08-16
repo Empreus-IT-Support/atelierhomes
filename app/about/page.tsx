@@ -9,15 +9,19 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Atelier Homes is the custom building arm of Rexley Building Pty Ltd — a licensed Canberra builder with trade roots going back to 2015.",
+    "Atelier Homes is the custom building arm of Rexley Building Pty Ltd, a licensed Canberra builder with trade roots going back to 2015.",
   alternates: { canonical: "/about" },
+  openGraph: {
+    url: "/about",
+    images: [{ url: "/images/banner-about.jpg", width: 1200, height: 630 }],
+  },
 };
 
 const values = [
   {
     n: "01",
     title: "Craft over volume",
-    text: "We take on a small number of projects at a time so every build gets a builder's full attention — not a project number.",
+    text: "We take on a small number of projects at a time so every build gets a builder's full attention, not a project number.",
   },
   {
     n: "02",
@@ -38,7 +42,7 @@ export default function AboutPage() {
         plate="01"
         eyebrow="About"
         title="A small studio approach to building"
-        lead="Atelier — a workshop where things are made by hand, with intent. That is how we build homes."
+        lead="Atelier: a workshop where things are made by hand, with intent. That is how we build homes."
         image="/images/banner-about.jpg"
         alt="Detail of a concrete and timber-clad facade seen from below"
       />
@@ -60,13 +64,13 @@ export default function AboutPage() {
               <p>
                 Atelier Homes is the custom building arm of {site.legalName}, a
                 Canberra company with trade roots going back to{" "}
-                {site.established} — from structural concrete and landscaping
+                {site.established}, from structural concrete and landscaping
                 through to complete homes.
               </p>
               <p>
                 That ground-up experience matters. A builder who has personally
                 formed, poured and finished the hard parts of a house reads a
-                set of drawings differently — and catches the problems on paper
+                set of drawings differently, and catches the problems on paper
                 before they become problems on site.
               </p>
               <p>
@@ -124,7 +128,7 @@ export default function AboutPage() {
               <div>
                 <span className="label label-muted">Where we build</span>
                 <p className="mt-3 text-[15px] text-[var(--foreground)]/85">
-                  Canberra and surrounds — all ACT districts.
+                  Canberra and surrounds, all ACT districts.
                 </p>
               </div>
             </div>

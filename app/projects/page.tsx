@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   description:
     "Selected custom homes, rebuilds and renovations by Atelier Homes across Canberra and the ACT.",
   alternates: { canonical: "/projects" },
+  openGraph: {
+    url: "/projects",
+    images: [{ url: "/images/banner-projects.jpg", width: 1200, height: 630 }],
+  },
 };
 
 // IMAGERY IS INDICATIVE, NOT CLIENT WORK. These are licensed stock photos
@@ -74,7 +78,7 @@ export default function ProjectsPage() {
         plate="03"
         eyebrow="Projects"
         title="Built work"
-        lead="The kind of work we take on across Canberra and the ACT — from heritage renovations to complete rebuilds."
+        lead="The kind of work we take on across Canberra and the ACT, from heritage renovations to complete rebuilds."
         image="/images/banner-projects.jpg"
         alt="Renovated living room with a slatted timber feature wall and bay window"
       />
@@ -83,7 +87,7 @@ export default function ProjectsPage() {
         <div className="container-x">
           <Reveal>
             <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 border-b border-[var(--line)] pb-6">
-              <span className="label label-muted">Index — selected work</span>
+              <span className="label label-muted">Index of selected work</span>
               <span className="label label-muted">Canberra, ACT</span>
             </div>
             <p className="mt-5 max-w-2xl text-[13.5px] leading-relaxed text-[var(--foreground)]/55">

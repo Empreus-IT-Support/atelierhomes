@@ -31,7 +31,7 @@ export default function Header() {
       }`}
     >
       <div className="container-x flex h-[86px] items-center justify-between">
-        <Link href="/" aria-label="Atelier Homes — home">
+        <Link href="/" aria-label="Atelier Homes, home">
           <Logo light={!solid} />
         </Link>
 

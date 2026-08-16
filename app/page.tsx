@@ -37,7 +37,7 @@ const steps = [
   {
     n: "01",
     title: "Conversation",
-    text: "Your block, budget and brief — honest advice before any commitment is made.",
+    text: "Your block, budget and brief. Honest advice before any commitment is made.",
   },
   {
     n: "02",
@@ -92,7 +92,7 @@ export default function HomePage() {
             <div className="mt-12 flex flex-col gap-10 border-t border-[rgba(246,243,236,0.2)] pt-8 lg:flex-row lg:items-end lg:justify-between">
               <p className="max-w-md text-[16px] leading-relaxed text-[rgba(246,243,236,0.78)]">
                 Architecturally considered new homes, knockdown rebuilds and
-                renovations across the ACT — built by a licensed builder with
+                renovations across the ACT, built by a licensed builder with
                 trade roots going back to {site.established}.
               </p>
 
@@ -165,7 +165,7 @@ export default function HomePage() {
             <p className="dropcap display t-lg mt-8 !leading-[1.2]">
               A workshop where things are made by hand, with intent.
               <span className="text-[var(--foreground)]/45">
-                {" "}That is how we build houses — slowly, deliberately, and
+                {" "}That is how we build houses: slowly, deliberately, and
                 only a few at a time.
               </span>
             </p>
@@ -284,7 +284,7 @@ export default function HomePage() {
             <div className="mt-12 flex flex-col gap-8 border-t border-[var(--line)] pt-8 sm:flex-row sm:items-end sm:justify-between">
               <p className="max-w-md text-[16px] leading-relaxed text-[var(--foreground)]/75">
                 Tell us where you&apos;re at. We&apos;ll give you an honest read
-                on feasibility, budget and timing — no obligation.
+                on feasibility, budget and timing. No obligation.
               </p>
               <div className="flex flex-wrap items-center gap-6">
                 <Link href="/contact" className="btn btn-solid">
