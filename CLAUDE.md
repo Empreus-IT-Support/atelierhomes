@@ -32,3 +32,23 @@ ACT Builder Licence 2018829.
 - The header is transparent with light text over the banner and inverts to
   solid paper on scroll — every page therefore needs a dark banner up top
 - No fabricated testimonials, project names, or awards. Ever.
+
+## Security
+
+Headers and CSP live in `next.config.ts`; contact-form defences in
+`app/api/contact/route.ts` (rate limit, honeypot, size cap, CRLF stripping,
+HTML escaping). Verified against a production build.
+
+Two known gaps, deliberately not yet addressed:
+
+1. **The rate limiter is in-memory and does not survive serverless.** The
+   `hits` map is per-instance and resets on redeploy, so on Vercel it is
+   best-effort rather than a real control. Move to Vercel KV or Upstash if
+   abuse becomes a concern.
+2. **CSP still allows `'unsafe-inline'` for `script-src`,** which removes most
+   of its XSS value. Fixing it properly means nonce-based CSP via middleware,
+   which costs static rendering on those routes.
+
+Never key rate limiting off the first `x-forwarded-for` entry: callers control
+it and the edge appends after it. Prefer `x-vercel-forwarded-for`/`x-real-ip`,
+falling back to the LAST `x-forwarded-for` entry.

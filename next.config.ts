@@ -10,7 +10,8 @@ const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  // No blob: — nothing here generates object URLs, so it stays off.
+  "img-src 'self' data:",
   "font-src 'self' data:",
   // Resend is called server-side only, so the browser needs no external origins.
   // Dev needs the HMR socket explicitly: a bare `ws:` scheme source is not

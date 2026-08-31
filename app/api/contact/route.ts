@@ -33,10 +33,30 @@ function rateLimited(ip: string) {
   return recent.length > MAX_PER_WINDOW;
 }
 
+// Resolve the rate-limit key from the most trustworthy source available.
+//
+// Never trust the FIRST entry of x-forwarded-for: a caller can send their own
+// header and the edge appends after it, so the leading value is fully
+// attacker-controlled and rotating it defeats the limiter. Platform-set
+// headers come first, and x-forwarded-for falls back to its LAST entry, which
+// is the value the closest proxy appended.
 function clientIp(request: Request) {
+  const vercel = request.headers.get("x-vercel-forwarded-for");
+  if (vercel) return vercel.split(",")[0].trim();
+
+  const real = request.headers.get("x-real-ip");
+  if (real) return real.trim();
+
   const fwd = request.headers.get("x-forwarded-for");
-  if (fwd) return fwd.split(",")[0].trim();
-  return request.headers.get("x-real-ip") ?? "unknown";
+  if (fwd) {
+    const parts = fwd
+      .split(",")
+      .map((p) => p.trim())
+      .filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
+
+  return "unknown";
 }
 
 function esc(value: string) {
