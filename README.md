@@ -29,14 +29,14 @@ Other scripts: `npm run build`, `npm run start`, `npm run lint`.
 ## Environment
 
 Copy `.env.example` to `.env.local` and fill it in. Nothing is required to run
-the site; without a Resend key the contact form validates normally and returns
+the site; without an Atlas key the contact form validates normally and returns
 a friendly "not configured" message instead of sending.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `RESEND_API_KEY` | To send mail | Resend API key |
+| `ATLAS_API_KEY` | To send mail | Per-client Atlas key |
 | `CONTACT_TO` | Recommended | Inbox that receives enquiries |
-| `CONTACT_FROM` | After domain verification | Sender address, must be a Resend-verified domain |
+| `CONTACT_FROM` | After domain verification | Bare sender address Atlas authorises for the key |
 
 ## Routes
 

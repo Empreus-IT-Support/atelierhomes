@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { atlasConfigured, sendAtlasEmail } from "@/lib/atlas";
 import { site } from "@/lib/site";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const TO = process.env.CONTACT_TO || site.email;
-const FROM =
-  process.env.CONTACT_FROM || "Atelier Homes Website <onboarding@resend.dev>";
+// Must be a bare address Atlas authorises for this key — see lib/atlas.ts.
+const FROM = process.env.CONTACT_FROM || "DoNotReply@atelierhomes.com.au";
 
 const MAX_PER_WINDOW = 5;
 const WINDOW_MS = 10 * 60 * 1000;
@@ -59,13 +59,6 @@ function clientIp(request: Request) {
   return "unknown";
 }
 
-function esc(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
 
 // Keep header-injection payloads out of the Subject line.
 function singleLine(value: string) {
@@ -121,28 +114,18 @@ export async function POST(request: Request) {
 
   // Config gate last: the input is known good by this point, so a missing key
   // is reported as a service problem rather than masking a user error.
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  if (!atlasConfigured()) {
     return NextResponse.json(
       { error: "Email is not configured yet. Please call us instead." },
       { status: 503 }
     );
   }
 
-  const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send({
+  const result = await sendAtlasEmail({
     from: FROM,
-    to: [TO],
+    to: TO,
     replyTo: email,
     subject: `Website enquiry from ${name}`,
-    html: `
-      <h2>New enquiry from atelierhomes.com.au</h2>
-      <p><strong>Name:</strong> ${esc(name)}</p>
-      <p><strong>Email:</strong> ${esc(email)}</p>
-      <p><strong>Phone:</strong> ${esc(phone) || "Not provided"}</p>
-      <p><strong>Message:</strong></p>
-      <p>${esc(message).replaceAll("\n", "<br/>")}</p>
-    `,
     text: [
       "New enquiry from atelierhomes.com.au",
       `Name: ${name}`,
@@ -153,8 +136,8 @@ export async function POST(request: Request) {
     ].join("\n"),
   });
 
-  if (error) {
-    console.error("[contact] Resend error:", error);
+  if (!result.ok) {
+    console.error(`[contact] Atlas send failed ${result.status}: ${result.detail}`);
     return NextResponse.json(
       { error: "Could not send your enquiry right now. Please call us instead." },
       { status: 502 }

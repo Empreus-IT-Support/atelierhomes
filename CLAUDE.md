@@ -6,7 +6,7 @@ ACT Builder Licence 2018829.
 
 ## Stack
 
-- Next.js 16 (App Router, TypeScript), Tailwind CSS v4, Resend for the contact form
+- Next.js 16 (App Router, TypeScript), Tailwind CSS v4, Atlas for the contact form
 - Dev server: port 3000 (`npm run dev`)
 - Deploy target: Vercel
 
