@@ -134,7 +134,7 @@ export default function HomePage() {
                 <p className="display mt-4 text-[clamp(2.25rem,4vw,3.25rem)]">
                   {big}
                 </p>
-                <p className="mt-4 max-w-[24ch] text-[14px] leading-relaxed text-[var(--foreground)]/70">
+                <p className="mt-4 max-w-[24ch] text-[14px] leading-relaxed text-[var(--foreground)]/85">
                   {small}
                 </p>
               </div>

@@ -120,7 +120,7 @@ textarea:-webkit-autofill {
   text-transform: uppercase;
   color: var(--accent-deep);
 }
-.label-muted { color: rgba(22, 19, 15, 0.42); }
+.label-muted { color: rgba(22, 19, 15, 0.62); }
 .label-light { color: rgba(246, 243, 236, 0.62); }
 
 .plate {

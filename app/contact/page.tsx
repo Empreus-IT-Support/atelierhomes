@@ -67,7 +67,7 @@ export default function ContactPage() {
           <Reveal delay={140}>
             <div className="bg-[var(--paper-2)] p-8 sm:p-12">
               <h2 className="display t-md">Send an enquiry</h2>
-              <p className="mt-3 text-[14.5px] text-[var(--foreground)]/70">
+              <p className="mt-3 text-[14.5px] text-[var(--foreground)]/85">
                 The more you can tell us about the block and the brief, the more
                 useful our first reply will be.
               </p>
