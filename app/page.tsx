@@ -164,7 +164,7 @@ export default function HomePage() {
             <span className="label">Atelier</span>
             <p className="dropcap display t-lg mt-8 !leading-[1.2]">
               A workshop where things are made by hand, with intent.
-              <span className="text-[var(--foreground)]/45">
+              <span className="text-[var(--foreground)]/60">
                 {" "}That is how we build houses: slowly, deliberately, and
                 only a few at a time.
               </span>
