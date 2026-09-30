@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-8 text-[12px] text-[rgba(246,243,236,0.45)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 pt-8 text-[12px] text-[rgba(246,243,236,0.55)] sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.name} · {site.legalName} · ABN{" "}
             {site.abn}
